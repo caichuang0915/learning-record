@@ -1,0 +1,9 @@
+server:
+  port: 18080
+
+
+dubbo:
+  application:
+    name: dubbo-client
+  registry:
+    address: zookeeper://106.52.145.64:2181
