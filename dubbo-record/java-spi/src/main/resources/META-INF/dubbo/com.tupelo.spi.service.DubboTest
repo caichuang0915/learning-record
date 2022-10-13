@@ -1,0 +1,3 @@
+DubboATest=com.tupelo.spi.service.impl.DubboATest
+DubboBTest=com.tupelo.spi.service.impl.DubboBTest
+

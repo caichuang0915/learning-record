@@ -5,5 +5,6 @@ server:
 dubbo:
   application:
     name: dubbo-client
+    register-consumer: true
   registry:
-    address: zookeeper://106.52.145.64:2181
+    address: zookeeper://106.52.145.64:2181?timeout=30000

@@ -1,0 +1,3 @@
+DubboARobot=com.tupelo.spi.service.impl.DubboARobot
+DubboBRobot=com.tupelo.spi.service.impl.DubboBRobot
+DubboWrapperRobot=com.tupelo.spi.service.impl.DubboWrapperRobot
