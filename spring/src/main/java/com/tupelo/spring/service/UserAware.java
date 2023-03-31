@@ -1,5 +1,8 @@
 package com.tupelo.spring.service;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
@@ -11,29 +14,18 @@ import javax.annotation.PostConstruct;
  * @Date: 2023/3/7 18:23
  */
 @Component
-public class UserAware implements EnvironmentAware {
-	@Override
-	public void setEnvironment(Environment environment) {
-		System.out.println("setEnvironment =======");
-	}
-	public UserAware(){
-		System.out.println("UserAware init =======");
-	}
+public class UserAware implements ApplicationContextAware {
 
-	@PostConstruct
-	public void doPostConstruct(){
-		System.out.println("doPostConstruct ========== ");
-	}
-
-//	@PostConstruct
-//	public void doDestory(){
-//		System.out.println("doDestory ========== ");
-//	}
-
+	private static ApplicationContext applicationContext;
 
 	@Override
-	protected void finalize() throws Throwable {
-		System.out.println("finalize=======");
-		super.finalize();
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		UserAware.applicationContext = applicationContext;
 	}
+
+	public static ApplicationContext getApplicationContext(){
+		return applicationContext;
+	}
+
+
 }
