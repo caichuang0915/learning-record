@@ -17,12 +17,12 @@ public class TupeloBeanFactoryPostProcessor implements BeanFactoryPostProcessor 
 	@Override
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
 
-		System.out.println("TupeloBeanFactoryPostProcessor ======");
-
-		Iterator<String> beanNamesIterator = configurableListableBeanFactory.getBeanNamesIterator();
-		while(beanNamesIterator.hasNext()) {
-			System.out.println(beanNamesIterator.next());
-		}
+//		System.out.println("TupeloBeanFactoryPostProcessor ======");
+//
+//		Iterator<String> beanNamesIterator = configurableListableBeanFactory.getBeanNamesIterator();
+//		while(beanNamesIterator.hasNext()) {
+//			System.out.println(beanNamesIterator.next());
+//		}
 
 	}
 }

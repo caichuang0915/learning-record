@@ -4,6 +4,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EnvironmentAware;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ import javax.annotation.PostConstruct;
  * @Date: 2023/3/7 18:23
  */
 @Component
+@EnableAspectJAutoProxy
 public class UserAware implements ApplicationContextAware {
 
 	private static ApplicationContext applicationContext;
@@ -22,6 +24,8 @@ public class UserAware implements ApplicationContextAware {
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		UserAware.applicationContext = applicationContext;
 	}
+
+
 
 	public static ApplicationContext getApplicationContext(){
 		return applicationContext;

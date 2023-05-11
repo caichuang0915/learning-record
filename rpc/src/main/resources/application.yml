@@ -1,0 +1,15 @@
+
+
+server:
+  port: 9000
+
+
+rpc:
+  port: 9001
+  root: /rpc
+  curator:
+    retryCount: 5
+    elapsedTimeMs: 5000
+    connectString: 106.52.145.64:2181
+    sessionTimeoutMs: 60000
+    connectionTimeoutMs: 5000

@@ -24,5 +24,6 @@
 		<module>jvm</module>
 		<module>thread</module>
 		<module>spring</module>
-	</modules>
+        <module>rpc</module>
+    </modules>
 </project>

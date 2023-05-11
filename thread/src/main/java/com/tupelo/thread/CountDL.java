@@ -75,15 +75,15 @@ public class CountDL {
 			}
 		});
 
-//		thread1.start();
-//		thread2.start();
-//		thread3.start();
-//
-//		Thread.sleep(2000L);
-//
-//		countDownLatch.countDown();
-//		countDownLatch.countDown();
-//		countDownLatch.countDown();
+		thread1.start();
+		thread2.start();
+		thread3.start();
+
+		Thread.sleep(2000L);
+
+		countDownLatch.countDown();
+		countDownLatch.countDown();
+		countDownLatch.countDown();
 
 		CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
 
@@ -139,9 +139,9 @@ public class CountDL {
 		});
 
 
-		thread11.start();
-		thread21.start();
-		thread31.start();
+//		thread11.start();
+//		thread21.start();
+//		thread31.start();
 
 
 
