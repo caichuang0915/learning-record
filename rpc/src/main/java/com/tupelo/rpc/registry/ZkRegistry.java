@@ -39,9 +39,9 @@ public class ZkRegistry {
 			RegistryAnno annotation = bean.getClass().getAnnotation(RegistryAnno.class);
 			Class<?> aClass = annotation.interfaceClass();
 			// 创建接口节点
-			serverZk.createIfNotExist(aClass.getName());
+			serverZk.createIfNotExistPre(aClass.getName());
 			// 创建提供者信息节点
-			String node = ip + ":" + rpcProperty.getPort();
+			String node = aClass.getName() + "/" + ip + ":" + rpcProperty.getPort();
 			serverZk.createIfNotExist(node);
 			log.info("{}服务注册成功 提供者为 {}",aClass.getName(),node);
 		}

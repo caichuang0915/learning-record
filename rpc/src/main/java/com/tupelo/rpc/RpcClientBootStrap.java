@@ -1,9 +1,6 @@
 package com.tupelo.rpc;
 
-import com.tupelo.rpc.registry.RpcRegistry;
-import com.tupelo.rpc.util.SpringBeanUtil;
-import org.checkerframework.checker.units.qual.A;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.tupelo.rpc.discover.RpcDiscover;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.annotation.Order;
@@ -14,15 +11,16 @@ import javax.annotation.Resource;
 /**
  * @Author: caichuang
  * @Date: 2023/5/11 18:11
+ * 客户端
  */
 @Configuration
-public class RpcBootStrap  {
+public class RpcClientBootStrap {
 
 
 	@Resource
-	private RpcRegistry rpcRegistry;
+	private RpcDiscover rpcDiscover;
 
 	public void init() throws Exception {
-		rpcRegistry.run();
+		rpcDiscover.run();
 	}
 }

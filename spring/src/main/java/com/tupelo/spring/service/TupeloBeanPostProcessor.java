@@ -13,7 +13,7 @@ public class TupeloBeanPostProcessor implements BeanPostProcessor {
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 //		System.out.println("postProcessAfterInitialization ===========" + beanName);
-		return null;
+		return bean;
 	}
 //
 //	@Override
