@@ -1,67 +1,71 @@
 package com.tupelo.design.sort;
 
-import com.alibaba.fastjson.JSON;
-
 import java.util.Arrays;
 
 /**
  * @Author: caichuang
- * @Date: 2023/3/31 15:10
+ * @Date: 2023/5/18 9:21
  */
 public class MergeSort {
 
+
 	public static void main(String[] args) {
-		int[] param  = {2,4,87,6,97,54,24,49};
-
-//		param = Arrays.copyOfRange(param, 4, param.length);
-//		param = Arrays.copyOfRange(param, 4, 5);
-
-		int[] sort = sort(param);
-//
-		System.out.println(JSON.toJSONString(sort));
-
+		int[] ints = {32,12,43,1,2,657,123,12,23,543,12,68,45,32};
+		sort(ints);
+		Arrays.stream(ints).forEach(System.out::println);
 	}
 
-	private static int[] sort(int[] param){
-		if(param.length<2){
-			return param;
+
+	public static void sort(int[] ints){
+		sort(ints,0,ints.length-1);
+	}
+
+	public static void sort(int[] ints,int left,int right){
+		int mid = (right+left) / 2;
+		if(left<right){
+			sort( ints, left, mid);
+			sort( ints, mid+1, right);
+			merge(ints ,left,mid,right);
 		}
-		int[] ints = Arrays.copyOf(param, param.length);
-		int mid = ints.length/2;
-		int[] ints1 = Arrays.copyOfRange(ints, 0, mid);
-		int[] ints2 = Arrays.copyOfRange(ints, mid, ints.length);
-		return merge(sort(ints1),sort(ints2));
 	}
 
+	public static void merge(int[] ints,int left,int mid,int right){
 
-	private static int[] merge(int[] left,int[] right){
+		// 构建一个临时数组
+		int[] temp = new int[right-left+1];
+		int k = 0;
+		int i = left;
+		int j = mid+1;
 
-		int[] result = new int[left.length + right.length];
-
-		int index = 0;
-		while (left.length>0 && right.length>0){
-			if(left[0]>right[0]){
-				result[index] = right[0];
-				right = Arrays.copyOfRange(right, 1, right.length);
+		// 第一次遍历
+		while (i<=mid && j<=right){
+			if(ints[i]<ints[j]){
+				temp[k] = ints[i];
+				i++;
 			}else {
-				result[index] = left[0];
-				left = Arrays.copyOfRange(left, 1, left.length);
+				temp[k] = ints[j];
+				j++;
 			}
-			index++;
+			k++;
 		}
 
-		while (left.length>0){
-			result[index] = left[0];
-			left = Arrays.copyOfRange(left, 1, left.length);
-			index++;
+		while (i<=mid){
+			temp[k] = ints[i];
+			i++;
+			k++;
 		}
 
-		while(right.length>0){
-			result[index] = right[0];
-			right = Arrays.copyOfRange(right, 1, right.length);
-			index++;
+		while (j<=right){
+			temp[k] = ints[j];
+			j++;
+			k++;
 		}
 
-		return result;
+		// 临时数组重新赋值回去
+		for (int i1 = 0; i1 < temp.length; i1++) {
+			ints[left+i1] = temp[i1];
+		}
 	}
+
+
 }

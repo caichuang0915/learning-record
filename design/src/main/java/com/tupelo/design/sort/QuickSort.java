@@ -1,76 +1,74 @@
 package com.tupelo.design.sort;
 
-import com.alibaba.fastjson.JSON;
+import java.util.Arrays;
 
 /**
  * @Author: caichuang
- * @Date: 2023/3/31 11:38
+ * @Date: 2023/5/18 9:21
  */
 public class QuickSort {
 
 
 	public static void main(String[] args) {
+		int[] ints = {32,12,43,1,2,657,123,12,23,543,12,68,45,32};
+		sort(ints);
+		Arrays.stream(ints).forEach(System.out::println);
+	}
 
-//		int[] param  = {2,4,87,6,97,54,24,49};
-		int[] param  = {87,6};
 
+	// 选择一个基准 大的移动到左边 小的移动到右边
 
+	public static void sort(int[] ints){
 
-
-		qs(param,0,param.length-1);
-		System.out.println(JSON.toJSONString(param));
-
+		sort(ints, 0, ints.length - 1);
 
 	}
 
 
-	private static void qs(int[] param,int left ,int right){
-
+	public static void sort(int[] ints,int left,int right){
 		if(left>=right){
 			return;
 		}
-
-		int partition = partition(param, left, right);
-
-		qs(param,left,partition-1);
-		qs(param,partition+1,right);
-
+		int i = sortPivot(ints, left, right);
+		sort(ints,left,i);
+		sort(ints,i+1,right);
 	}
 
-	private static int partition(int[] param,int left ,int right){
+	public static int sortPivot(int[] ints,int left,int right){
 
-		int pivot = param[left];
-		int index = left;
-
+		int pivot = left;
+		int num = ints[pivot];
 		while (left<right){
-			while (right>left){
-				if(param[right] < pivot){
-					swap(right,index,param);
-					index = right;
+			while (left<right){
+				if(ints[right] < num){
+					swap(ints,right,pivot);
+					pivot = right;
 					left++;
 					break;
 				}
 				right--;
 			}
-			while (right>left){
-				if(param[left] > pivot){
-					swap(left,index,param);
-					index = left;
+			while (left<right){
+				if(ints[left] > num){
+					swap(ints,left,pivot);
+					pivot = left;
 					right--;
 					break;
-
 				}
 				left++;
 			}
 		}
-		return index;
+		return pivot;
 	}
 
 
-	private static void swap(int a,int b,int[] param){
-		int i = param[a];
-		param[a] = param[b];
-		param[b] = i;
+
+
+
+	public static void swap(int[] ints,int i,int j){
+		int tmp = ints[i];
+		ints[i] = ints[j];
+		ints[j] = tmp;
 	}
 
 

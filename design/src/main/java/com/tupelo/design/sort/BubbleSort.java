@@ -3,8 +3,7 @@ package com.tupelo.design.sort;
 import com.alibaba.fastjson.JSON;
 
 /**
- * @Author: caichuang
- * @Date: 2023/3/31 11:38
+ * 冒泡排序
  */
 public class BubbleSort {
 
