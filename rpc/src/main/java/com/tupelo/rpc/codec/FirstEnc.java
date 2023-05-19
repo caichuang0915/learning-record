@@ -19,7 +19,6 @@ public class FirstEnc extends MessageToMessageEncoder<RpcResponse> {
 
 	@Override
 	protected void encode(ChannelHandlerContext channelHandlerContext, RpcResponse rpcResponse, List<Object> list) throws Exception {
-		System.out.println("FirstEnc==========");
 		byte[] serialize = ProtostuffUtil.serialize(rpcResponse);
 		ByteBuf byteBuf = channelHandlerContext.alloc().buffer(serialize.length).writeBytes(serialize);
 		list.add(byteBuf);

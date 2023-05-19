@@ -19,7 +19,6 @@ public class SecondEnc extends LengthFieldPrepender {
 
 	@Override
 	protected void encode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
-		System.out.println("encode1111111");
 		super.encode(ctx, msg, out);
 	}
 }

@@ -33,29 +33,21 @@ public class RequestProxy implements MethodInterceptor {
 
 	@Override
 	public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-
 		if(ReflectionUtils.isObjectMethod(method)){
 			return method.invoke(method.getDeclaringClass().newInstance(),objects);
 		}
-
 		RpcRequest rpcRequest = new RpcRequest();
-
 		rpcRequest.setRequestId(UUID.randomUUID().toString());
-		rpcRequest.setMethodName(method.getDeclaringClass().getName());
 		rpcRequest.setClassName(method.getDeclaringClass().getName());
 		rpcRequest.setMethodName(method.getName());
 		rpcRequest.setParameterTypes(method.getParameterTypes());
 		rpcRequest.setParameters(objects);
-
 		// 发送请求
-
 		RequestManage requestManage = SpringBeanUtil.getBean(RequestManage.class);
 		RpcResponse rpcResponse = requestManage.sendRequest(rpcRequest);
-
 		if(null==rpcResponse){
 			return null;
 		}
-
 		return rpcResponse.getResult();
 	}
 

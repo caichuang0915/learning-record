@@ -31,12 +31,10 @@ public class RequestManage {
 
 
 	public RpcResponse sendRequest(RpcRequest rpcRequest) throws Exception {
-
 		List<ServiceProvider> serviceProviders = RegistryInfo.registryMap.get(rpcRequest.getClassName());
 		if(CollectionUtils.isEmpty(serviceProviders)){
 			throw new Exception();
 		}
-
 		ServiceProvider serviceProvider = serviceProviders.get(0);
 		return nettySend(serviceProvider, rpcRequest);
 	}

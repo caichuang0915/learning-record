@@ -19,13 +19,10 @@ public class SecondDec extends MessageToMessageDecoder<ByteBuf> {
 
 	@Override
 	protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) throws Exception {
-
-		System.out.println("SecondDec =======");
 		int len = byteBuf.readableBytes();
 		byte[] data = new byte[len];
 		byteBuf.readBytes(data);
 		RpcRequest rpcRequest = ProtostuffUtil.deserialize(data, RpcRequest.class);
 		list.add(rpcRequest);
-
 	}
 }

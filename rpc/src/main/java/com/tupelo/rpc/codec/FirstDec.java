@@ -16,7 +16,6 @@ public class FirstDec extends LengthFieldBasedFrameDecoder {
 
 	@Override
 	protected Object decode(ChannelHandlerContext ctx, ByteBuf in) throws Exception {
-		System.out.println("decode 1111111");
 		return super.decode(ctx, in);
 	}
 }
