@@ -35,37 +35,43 @@ package com.tupelo.algorithm;
 public class Nconvert {
 
 	public static void main(String[] args) {
-		String s = "PAYPALISHIRING";
-		int num = 4; // PINALSIGYAHRPI
-
-//		System.out.println(convert(s,num));
-		System.out.println(getRowStr(s,num,2));
+		String s = "hvdfjhv";
+		// PINALSIGYAHRPI
+		int num = 1;
+		System.out.println(convert(s,num));
 	}
 
 	public static String convert(String s, int numRows) {
 
-		for (int i = 0; i < numRows; i++) {
-
-
-
-
+		StringBuffer[] stringBuffers = new StringBuffer[numRows];
+		int step = 2*numRows-2;
+		if(0==step){
+			return s;
 		}
-
-
-
-		return "";
-	}
-
-	public static String getRowStr(String s,int numRows,int row){
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < s.length(); i++) {
-			int x = ( (numRows - 2 * row) * 2 + 1 + 1 ) * i  + row - 1;
-			if(x>s.length()-1){
+		for (int i = 0; i < s.length(); i = i + step) {
+			int start  = i ;
+			int end = i + step - 1;
+			if(end > s.length() - 1){
+				end = s.length() - 1;
+			}
+			for (int i1 = start; i1 <= end; i1++) {
+				int index = i1-start;
+				if(i1-start >= numRows){
+					index = step - (i1 - start);
+				}
+				StringBuffer stringBuffer = null == stringBuffers[index] ? new StringBuffer() :  stringBuffers[index];
+				stringBuffers[index] = stringBuffer.append(s.charAt(i1));
+			}
+		}
+		StringBuilder stringBuilder = new StringBuilder();
+		for (StringBuffer sb : stringBuffers) {
+			if(null==sb){
 				break;
 			}
-			sb.append(s.charAt(x));
+			stringBuilder.append(sb);
 		}
-		return sb.toString();
-
+		return stringBuilder.toString();
 	}
+
+
 }
