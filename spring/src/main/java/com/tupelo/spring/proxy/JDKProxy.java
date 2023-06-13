@@ -31,7 +31,7 @@ public class JDKProxy implements InvocationHandler {
 
 
 	public static void main(String[] args) {
-		ProxyServiceImpl proxyService = new ProxyServiceImpl();
+		ProxyService proxyService = new ProxyServiceImpl();
 		JDKProxy jdkProxy = new JDKProxy(proxyService);
 		ProxyService ps = (ProxyService)Proxy.newProxyInstance(proxyService.getClass().getClassLoader(), proxyService.getClass().getInterfaces(), jdkProxy);
 		String s = ps.doTest();
